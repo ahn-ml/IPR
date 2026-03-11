@@ -1,0 +1,56 @@
+# @package _global_
+defaults:
+  - /main
+  - /experiment: ep_4
+  - _self_
+
+seed: 42
+
+data_loader:
+  test:
+    batch_size: 500
+
+checkpointing:
+  load: outputs/ep_4/paper/checkpoints/last.ckpt
+
+hydra:
+  run:
+    dir: ./experiments/ep_test/outputs
+
+wandb:
+  activated: false
+  project: "ep_test"
+  entity: ""
+  mode: "online"
+  tags: []
+
+test:
+  my_test:
+    name: even_pixels
+    num_samples: 1
+    save_samples: false
+    sampling_video: false
+    
+    samplers:
+      ipr_sampler_test:
+        name: ipr_sampler
+        max_batch_size: 32
+        task_name: even_pixels
+
+        # ipr config
+        visualize: true
+        immediate_stop: false
+        max_ipr_budget: 30
+        resampling_ratio: 0.25
+        ipr_overlap: 0.9
+        ipr_steps_per_patch: 30
+
+        # srm config
+        patch_order: "greedy"
+        overlap: 0.9
+        epsilon: 1e-6
+        top_k: 1
+        use_ema: true
+        steps_per_patch: 30
+        stochasticity: 0.5
+        temperature: 1.0

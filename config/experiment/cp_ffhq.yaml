@@ -1,0 +1,21 @@
+# @package _global_
+
+defaults:
+  - override /dataset: counting_polygons_ffhq
+  - override /model/denoiser: unet_128
+
+validation:
+  sampling:
+    name: counting_objects
+
+wandb:
+  tags: [counting, ffhq]
+
+data_loader:
+  # per GPU, trained on 1 GPU with >40GB
+  train:
+    batch_size: 56
+  val:
+    batch_size: 56
+  test:
+    batch_size: 128

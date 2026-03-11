@@ -1,0 +1,12 @@
+# @package _global_
+
+defaults:
+  - cp_ffhq
+  - override /model/time_sampler: mean_beta
+
+patch_size: 8
+
+model:
+  time_sampler:
+    beta_sharpness: 0.5
+    add_zeros: true

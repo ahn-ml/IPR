@@ -1,0 +1,24 @@
+# @package _global_
+
+defaults:
+  - override /dataset: mnist_sudoku1000
+  - override /model/denoiser: unet_256
+
+conditioning:
+  mask: true
+
+validation:
+  sampling:
+    name: mnist_sudoku
+
+wandb:
+  tags: [sudoku, mnist]
+
+data_loader:
+  train:
+    # per GPU, trained on 2 GPUS with >80GB
+    batch_size: 28
+  val:
+    batch_size: 32
+  test:
+    batch_size: 20 # beam_width * batch_size <= 64 로 유지 필요

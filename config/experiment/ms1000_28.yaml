@@ -1,0 +1,11 @@
+# @package _global_
+
+defaults:
+  - ms1000
+  - override /model/time_sampler: mean_beta
+
+patch_size: 28
+
+model:
+  time_sampler:
+    beta_sharpness: 1.

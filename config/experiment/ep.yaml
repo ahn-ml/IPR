@@ -1,0 +1,30 @@
+# @package _global_
+
+defaults:
+  - override /dataset: even_pixels
+  - override /model/denoiser: unet_32
+
+optimizer:
+  lr: 8.e-4
+
+validation:
+  sampling:
+    name: even_pixels
+
+trainer:
+  max_steps: 100_001
+
+checkpointing:
+  every_n_train_steps_persistently: 10_000
+
+wandb:
+  tags: [even, pixels]
+
+data_loader:
+  # per GPU, trained on 1 GPU with >80GB
+  train:
+    batch_size: 2048
+  val:
+    batch_size: 256
+  test:
+    batch_size: 256

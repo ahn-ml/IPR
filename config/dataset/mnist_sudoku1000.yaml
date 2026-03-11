@@ -1,0 +1,7 @@
+name: mnist_sudoku_lazy
+root: datasets/mnist_sudoku
+image_shape: [252, 252]
+subset_size: null
+top_n: 1000
+augment: false
+grayscale: true

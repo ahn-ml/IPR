@@ -1,0 +1,23 @@
+name: counting_polygons_ffhq
+root: datasets/counting_polygons
+labeler_name: null
+are_nums_on_images: true
+image_shape: [128, 128]
+subset_size: null
+min_vertices: 3
+max_vertices: 7
+hsv_saturation: 1.0
+hsv_value: 0.9
+augment: false
+grayscale: false
+
+counting_objects_classifier_path: datasets/counting_polygons/ffhq128.pth
+counting_objects_classifier_model_base: resnet50
+
+subdataset_cfg:
+  name: ffhq
+  root: datasets/counting_polygons/ffhq  # path to ffhq image directory
+  image_shape: [128, 128]
+  subset_size: null
+  augment: true
+  grayscale: false

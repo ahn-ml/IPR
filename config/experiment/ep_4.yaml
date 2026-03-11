@@ -1,0 +1,12 @@
+# @package _global_
+
+defaults:
+  - ep
+  - override /model/time_sampler: mean_beta
+
+patch_size: 4
+
+model:
+  time_sampler:
+    beta_sharpness: 0.75
+    add_zeros: true

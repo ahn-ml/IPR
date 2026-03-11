@@ -1,0 +1,88 @@
+defaults:
+  - dataset: even_pixels
+  - model/denoiser: unet_32
+  - model/flow: rectified
+  - model/time_sampler: mean_beta
+  - optimizer: default
+
+conditioning:
+  label: false
+  mask: false
+
+patch_size: 1
+
+model:
+  flow:
+    variance: learned_range
+  learn_sigma: true
+  time_interval: [0.0, 1.0]
+  ema: true
+
+loss:
+  sigma:
+    weight: 0.01
+
+train:
+  step_offset: 0
+
+validation: {}
+
+test: {}
+
+hydra:
+  run:
+    dir: ""   # override!
+
+wandb:
+  project: srm
+  entity: placeholder
+  mode: online
+  activated: true
+
+mode: train
+
+data_loader:
+  # Avoid having to spin up new processes to print out visualizations.
+  train:
+    num_workers: 16
+    persistent_workers: true
+    batch_size: 128
+    seed: null # 1234
+  test:
+    num_workers: 4
+    persistent_workers: false
+    batch_size: 16
+    seed: null # 2345
+  val:
+    num_workers: 16
+    persistent_workers: true
+    batch_size: 16
+    seed: null # 3456
+
+checkpointing:
+  load: null
+  resume: false
+  save: true
+  every_n_train_steps: 5000
+  every_n_train_steps_persistently: 50_000
+  save_top_k: null
+
+mnist_classifier: datasets/mnist_sudoku/mnist_classifier.pth
+seed: null
+
+trainer:
+  max_epochs: -1
+  max_steps: 250_001
+  val_check_interval: 1000
+  log_every_n_steps: 50
+  task_steps: null
+  accumulate_grad_batches: 1
+  precision: bf16-mixed
+  num_nodes: 1
+  validate: true
+  profile: false
+  detect_anomaly: false
+
+torch:
+  float32_matmul_precision: high  # (null --> default) highest / high / medium
+  cudnn_benchmark: false

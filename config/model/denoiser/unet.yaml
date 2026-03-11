@@ -1,0 +1,10 @@
+defaults:
+  - denoiser
+
+name: unet
+t_emb_dim: 512
+num_blocks: 2
+res_block_cfg:
+  dropout: 0.1
+attention_cfg:
+  num_head_channels: 64

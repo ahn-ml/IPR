@@ -1,0 +1,5 @@
+name: even_pixels
+image_shape: [32, 32]
+subset_size: null
+augment: false
+grayscale: false
