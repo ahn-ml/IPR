@@ -1,4 +1,4 @@
-# Iterative Partial Refinement (IPR)
+# Inference-Time Scaling in Diffusion Models through Iterative Partial Refinement
 
 Official code for **"Inference-Time Scaling in Diffusion Models through Iterative Partial Refinement"** (ICLR 2026 Workshop on AI with Recursive Self-Improvement). [[Paper]](https://openreview.net/forum?id=QopjICzGwr)
 
